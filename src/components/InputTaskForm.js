@@ -1,7 +1,7 @@
 import React from 'react';
 
-/* GetTask renders a form, and returns the input to our InputTask method. */
-const GetTask = ({ task }) => { 
+/* InputTaskForm renders a form, and returns the input to our storeTask method. */
+const InputTaskForm = ({ task }) => { 
     return (                                      
       <form name="charlie" onSubmit={task}>
         <input name="userinput" type="text"/> 
@@ -10,4 +10,4 @@ const GetTask = ({ task }) => {
     );
 }
 
-export default GetTask;
+export default InputTaskForm;

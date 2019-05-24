@@ -13,11 +13,22 @@ class App extends Component {
 
 
 /* ================================== #METHODS  ================================== */
-storeTask = event => {
-  event.preventDefault();
+formValidation = event => {
+  event.preventDefault();                                   // prevent form from auto-refreshing on submit
+  const userInput = event.target.userinput.value            // userInput stored
+  
+  if (userInput.trim().length < 1) {                        // remove prefixed and affixed spaces, then check length
+    alert(`Error: invalid submission`)
+  } else {
+    this.storeTask(event, userInput);
+  };
+};
+
+
+storeTask = (event, userInput) => {                         // props passed from formValidation
     this.setState({
-      userinput: event.target.userinput.value,
-      tasksarray: [...this.state.tasksarray, { title: event.target.userinput.value, strike: false } ] //create a copy of tasks array then add a new object into the array filled out with user input
+      userinput: userInput,
+      tasksarray: [...this.state.tasksarray, { title: userInput, strike: false } ] //create a copy of tasks array then add a new object into the array filled out with user input
     });
     document.forms["charlie"].reset();
   };
@@ -48,13 +59,14 @@ strikeTask = index => {
 
 componentDidUpdate() {
   console.log(this.state.tasksarray);                       // debugging :) 
-}
+};
 
 
 /* =================================== #RENDER  ================================== */
 
   render() { 
     const { tasksarray } = this.state
+    const { formValidation } = this
     const { storeTask }  = this
     const { removeTask } = this
     const { strikeTask } = this
@@ -62,7 +74,9 @@ componentDidUpdate() {
     return (
       <div>
         <InputTaskForm 
-          task={storeTask} />
+          task={storeTask}
+          formValidation={formValidation} />
+
 
         <DisplayTasks 
           tasks={tasksarray} 

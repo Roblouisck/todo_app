@@ -1,10 +1,10 @@
 import React from 'react';
 
 /* InputTaskForm renders a form, and returns the input to our storeTask method. */
-const InputTaskForm = ({ task }) => { 
+const InputTaskForm = ({ formValidation }) => { 
     return (                                      
-      <form name="charlie" onSubmit={task}>
-        <input name="userinput" type="text"/> 
+      <form name="charlie" onSubmit={formValidation}>
+        <input name="userinput" type="text" placeholder="task..." /> 
         <button type="submit" style={{ cursor: "pointer" }}>Submit</button>
       </form>
     );

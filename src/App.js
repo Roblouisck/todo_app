@@ -12,12 +12,14 @@ class App extends Component {
   }
 
 
-/* ================================== #METHODS  ================================== */
-formValidation = event => {
+/* ================================== #FUNCTIONS ================================== 
+=================================================================================== */
+
+formValidation = event => {                                 // event prop passed from InputTaskForm component
   event.preventDefault();                                   // prevent form from auto-refreshing on submit
   const userInput = event.target.userinput.value            // userInput stored
   
-  if (userInput.trim().length < 1) {                        // remove prefixed and affixed spaces, then check length
+  if (userInput.trim().length < 1) {                        // trim (remove) prefixed and affixed spaces, then check length
     alert(`Error: invalid submission`)
   } else {
     this.storeTask(event, userInput);
@@ -25,7 +27,7 @@ formValidation = event => {
 };
 
 
-storeTask = (event, userInput) => {                         // props passed from formValidation
+storeTask = (event, userInput) => {                         // props passed from formValidation function
     this.setState({
       userinput: userInput,
       tasksarray: [...this.state.tasksarray, { title: userInput, strike: false } ] //create a copy of tasks array then add a new object into the array filled out with user input
@@ -34,7 +36,7 @@ storeTask = (event, userInput) => {                         // props passed from
   };
 
 
-removeTask = (event, index) => {
+removeTask = (event, index) => {                           // props passed from DisplayTasks component
   event.stopPropagation();                                 // prevents bubbling to strikeTask in the DisplayTask component
   
   const removedTaskArray = [...this.state.tasksarray];     // copy of tasksarray
@@ -43,15 +45,15 @@ removeTask = (event, index) => {
 };
 
 
-strikeTask = index => {
+strikeTask = index => {                                    // index prop passed from DisplayTasks component
   const { tasksarray } = this.state
   const selected = tasksarray[index];
 
-  this.setState({
-    tasksarray: [                                           // setState new tasksarray: [below slice, change, after slice]
-      ...tasksarray.slice(0, index),                        // create a copy of the array, below index
+  this.setState({                                           
+    tasksarray: [                                           // change taskarray state to: [prior slice, change, after slice]
+      ...tasksarray.slice(0, index),                        // slice off (copies) of array elements prior to index element
       Object.assign(selected, {strike: !selected.strike}),  // invert the selected line's strike value
-      ...tasksarray.slice(index + 1)                        // create a copy of the array, after index
+      ...tasksarray.slice(index + 1)                        // slice off (copies) of array elements after index element
     ]
   });
 };
@@ -62,7 +64,8 @@ componentDidUpdate() {
 };
 
 
-/* =================================== #RENDER  ================================== */
+/* ================================== #RENDER ===================================== 
+=================================================================================== */
 
   render() { 
     const { tasksarray } = this.state
@@ -91,5 +94,6 @@ componentDidUpdate() {
 
 
 
-/* =================================== EXPORT =================================== */
+/* ================================== #EXPORT ===================================== 
+=================================================================================== */
 export default App;

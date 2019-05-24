@@ -5,7 +5,7 @@ const InputTaskForm = ({ task }) => {
     return (                                      
       <form name="charlie" onSubmit={task}>
         <input name="userinput" type="text"/> 
-        <button type="submit">Submit</button>
+        <button type="submit" style={{ cursor: "pointer" }}>Submit</button>
       </form>
     );
 }

@@ -2,23 +2,25 @@ import React from 'react';
 
 const DisplayTasks = ({ tasks, removeTask, strikeTask }) => {
   return (
-    <ol>
-      {tasks.map((task, index) => (
-        <li 
-          key = {index} 
-          onClick = {() => strikeTask(index)} 
-          style = {{ cursor: "pointer" }} > 
+    <div id="orderedList">
+      <ol>
+        {tasks.map((task, index) => (
+          <li 
+            onClick = {() => strikeTask(index)} 
+            key = {index} >
 
-          {task.strike ? <strike>{task.title}</strike> : task.title}
+            {task.strike ? <strike>{task.title}</strike> : task.title}
 
-          <button 
-            onClick = {event => removeTask(event, index)} 
-            style = {{ marginLeft: "10px", cursor: "pointer" }} > Remove
-          </button>
+            <button 
+              id = "removeButton"
+              onClick = {event => removeTask(event, index)} 
+              style = {{ marginLeft: "10px"}} > Remove
+            </button>
 
-        </li>
-      ))}
-    </ol>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 };
 

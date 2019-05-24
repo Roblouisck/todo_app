@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import InputTaskForm from './components/InputTaskForm';
 import DisplayTasks from './components/DisplayTasks';
+import './App.css';
+
 
 class App extends Component {
   constructor() {
@@ -12,9 +14,8 @@ class App extends Component {
   }
 
 
-/* ================================== #FUNCTIONS ================================== 
-=================================================================================== */
-
+/* ============================================== #FUNCTIONS ============================================== 
+=========================================================================================================== */
 formValidation = event => {                                 // event prop passed from InputTaskForm component
   event.preventDefault();                                   // prevent form from auto-refreshing on submit
   const userInput = event.target.userinput.value            // userInput stored
@@ -50,7 +51,7 @@ strikeTask = index => {                                    // index prop passed 
   const selected = tasksarray[index];
 
   this.setState({                                           
-    tasksarray: [                                           // change taskarray state to: [prior slice, change, after slice]
+    tasksarray: [                                           // change tasksarray state to: [prior slice, change, after slice]
       ...tasksarray.slice(0, index),                        // slice off (copies) of array elements prior to index element
       Object.assign(selected, {strike: !selected.strike}),  // invert the selected line's strike value
       ...tasksarray.slice(index + 1)                        // slice off (copies) of array elements after index element
@@ -64,9 +65,8 @@ componentDidUpdate() {
 };
 
 
-/* ================================== #RENDER ===================================== 
-=================================================================================== */
-
+/* =============================================== #RENDER ================================================ 
+=========================================================================================================== */
   render() { 
     const { tasksarray } = this.state
     const { formValidation } = this
@@ -91,9 +91,6 @@ componentDidUpdate() {
 };
 
 
-
-
-
-/* ================================== #EXPORT ===================================== 
-=================================================================================== */
+/* ================================================ #EXPORT =============================================== 
+=========================================================================================================== */
 export default App;

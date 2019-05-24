@@ -17,7 +17,7 @@ storeTask = event => {
   event.preventDefault();
     this.setState({
       userinput: event.target.userinput.value,
-      tasksarray: [...this.state.tasksarray, { title: event.target.userinput.value, strike: false } ] //create a copy of tasks array then add the new object into the array filled out with user input
+      tasksarray: [...this.state.tasksarray, { title: event.target.userinput.value, strike: false } ] //create a copy of tasks array then add a new object into the array filled out with user input
     });
     document.forms["charlie"].reset();
   };
@@ -37,10 +37,10 @@ strikeTask = index => {
   const selected = tasksarray[index];
 
   this.setState({
-    tasksarray: [
-      ...tasksarray.slice(0, index),                        // create a copy of everything below index
-      Object.assign(selected, {strike: !selected.strike}),  // change the selected lines strike value to true or false
-      ...tasksarray.slice(index + 1)                        // create a copy of everything after index
+    tasksarray: [                                           // setState new tasksarray: [below slice, change, after slice]
+      ...tasksarray.slice(0, index),                        // create a copy of the array, below index
+      Object.assign(selected, {strike: !selected.strike}),  // invert the selected line's strike value
+      ...tasksarray.slice(index + 1)                        // create a copy of the array, after index
     ]
   });
 };

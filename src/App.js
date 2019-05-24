@@ -3,14 +3,10 @@ import InputTaskForm from './components/InputTaskForm';
 import DisplayTasks from './components/DisplayTasks';
 import './App.css';
 
-
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      userinput: '',
-      tasksarray: [],                               
-    }
+  state = {
+  userinput: '',
+  tasksarray: [],                               
   }
 
 
@@ -64,15 +60,11 @@ componentDidUpdate() {
   console.log(this.state.tasksarray);                       // debugging :) 
 };
 
-
 /* =============================================== #RENDER ================================================ 
 =========================================================================================================== */
   render() { 
     const { tasksarray } = this.state
-    const { formValidation } = this
-    const { storeTask }  = this
-    const { removeTask } = this
-    const { strikeTask } = this
+    const { formValidation, storeTask, removeTask, strikeTask } = this
 
     return (
       <div>

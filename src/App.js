@@ -71,12 +71,10 @@ componentDidUpdate() {
           task={storeTask}
           formValidation={formValidation} />
 
-
         <DisplayTasks 
           tasksArray={tasksarray} 
           removeTask={removeTask} 
-          crossOutTask={crossOutTask}
-          taskLogic={this.taskLogic} />
+          crossOutTask={crossOutTask} />
       </div>
       );
     };

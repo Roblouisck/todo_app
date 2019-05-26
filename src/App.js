@@ -5,66 +5,65 @@ import './App.css';
 
 class App extends Component {
   state = {
-  userinput: '',
-  tasksarray: [],                               
+    userinput: '',
+    tasksarray: [],                               
   }
 
 
 /* ============================================== #FUNCTIONS ============================================== 
 =========================================================================================================== */
-formValidation = event => {                                 // event prop passed from InputTaskForm component
-  event.preventDefault();                                   // prevent form from auto-refreshing on submit
-  const userInput = event.target.userinput.value            // userInput stored
-  
-  if (userInput.trim().length < 1) {                        // trim (remove) prefixed and affixed spaces, then check length
-    alert(`Error: invalid submission`)
-  } else {
-    this.storeTask(event, userInput);
-  };
+formValidation = event => {                                       // event prop passed from InputTaskForm component
+  event.preventDefault();                                         // prevent form from auto-refreshing on submit
+  const userInput = event.target.userinput.value                  // userInput stored
+  const userInputIsBlank = userInput.trim().length < 1            // trim (remove) prefixed and affixed spaces, then check length
+
+  userInputIsBlank 
+    ? alert(`Error: invalid submission`) 
+    : this.storeTask(userInput);
 };
 
-
-storeTask = (event, userInput) => {                         // props passed from formValidation function
+storeTask = userInput => {                                         // userInput passed from formValidation function
     this.setState({
       userinput: userInput,
-      tasksarray: [...this.state.tasksarray, { title: userInput, strike: false } ] //create a copy of tasks array then add a new object into the array filled out with user input
+      tasksarray: [...this.state.tasksarray, { title: userInput, crossedOut: false } ] //create a copy of tasks array then add a new object into the array filled out with user input
     });
     document.forms["charlie"].reset();
-  };
-
-
-removeTask = (event, index) => {                           // props passed from DisplayTasks component
-  event.stopPropagation();                                 // prevents bubbling to strikeTask in the DisplayTask component
-  
-  const removedTaskArray = [...this.state.tasksarray];     // copy of tasksarray
-  removedTaskArray.splice(index, 1);                       // remove index from array               
-  this.setState({ tasksarray: removedTaskArray });         // replace old array
 };
 
 
-strikeTask = index => {                                    // index prop passed from DisplayTasks component
+removeTask = (event, index) => {                                    // props passed from DisplayTasks component
+  event.stopPropagation();                                          // prevents bubbling to crossOutTask in the DisplayTask component
+  const removedTaskArray = [...this.state.tasksarray];              //removedTaskArray is just a copy of our current array for the moment
+ 
+  removedTaskArray.splice(index, 1);                                //here removedTaskArray actually becomes an array w/ the removed task (removed with splice)                 
+  this.setState({ tasksarray: removedTaskArray });   
+};
+
+
+crossOutTask = index => {                                           // index prop passed from DisplayTasks component
   const { tasksarray } = this.state
   const selected = tasksarray[index];
 
   this.setState({                                           
-    tasksarray: [                                           // change tasksarray state to: [prior slice, change, after slice]
-      ...tasksarray.slice(0, index),                        // slice off (copies) of array elements prior to index element
-      Object.assign(selected, {strike: !selected.strike}),  // invert the selected line's strike value
-      ...tasksarray.slice(index + 1)                        // slice off (copies) of array elements after index element
+    tasksarray: [                                                   // change tasksarray state to: [prior slice, change, after slice]
+      ...tasksarray.slice(0, index),                                // slice off (copies) of array elements prior to index element
+      Object.assign(selected, {crossedOut: !selected.crossedOut}),  // invert the selected line's crossedOut value
+      ...tasksarray.slice(index + 1)                                // slice off (copies) of array elements after index element
     ]
   });
 };
 
 
 componentDidUpdate() {
-  console.log(this.state.tasksarray);                       // debugging :) 
+  console.log(this.state.tasksarray);                               // debugging :) 
 };
+
 
 /* =============================================== #RENDER ================================================ 
 =========================================================================================================== */
   render() { 
     const { tasksarray } = this.state
-    const { formValidation, storeTask, removeTask, strikeTask } = this
+    const { formValidation, storeTask, removeTask, crossOutTask } = this
 
     return (
       <div>
@@ -74,9 +73,10 @@ componentDidUpdate() {
 
 
         <DisplayTasks 
-          tasks={tasksarray} 
+          tasksArray={tasksarray} 
           removeTask={removeTask} 
-          strikeTask={strikeTask} />
+          crossOutTask={crossOutTask}
+          taskLogic={this.taskLogic} />
       </div>
       );
     };

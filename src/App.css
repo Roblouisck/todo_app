@@ -1,9 +1,11 @@
+/* Prevent highlighting when double clicking list items */
 #orderedList {
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
   user-select: none;          /* Likely future */    
-  cursor: pointer;  
+  cursor: pointer;
+  margin-right: 400px;  
 }
 
 .removeButton {
@@ -12,4 +14,36 @@
 
 button {
   cursor: pointer;
+}
+
+.todo-container {
+  margin-left: 600px;
+  margin-top: 20px;
+  margin-right: 700px;
+  margin-bottom: 500px;
+}
+
+.charlie {
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+ol {
+  margin-left: 20px;
+}
+
+.Tasks-title {
+  margin-top: 50px;
+  margin-left: 600px;
+}
+
+#inputTasksContainer {
+  text-align: center;
+}
+
+#tasks {
+  margin-left: 650px;
 }

@@ -66,9 +66,9 @@ componentDidUpdate() {
     const { formValidation, storeTask, removeTask, crossOutTask } = this
 
     return (
-      <div className="grid-container">
+      <div className="overall-grid-container">
         <div className="input-tasks-grid-container box">
-          <h1 className="title is-4">Submit Your Todo's</h1>
+          <h1 className="title is-4">Task Submission Box</h1>
 
           <InputTaskForm 
             task={storeTask}
@@ -76,7 +76,7 @@ componentDidUpdate() {
           </div>
         
         <div className="tasks-grid-container">
-          <h1 className="tasks-title title is-4">Tasks</h1>
+          <h1 className="tasks-title title is-4">Tasks </h1>
           <h1 className="tip-text Tasks-title subtitle is-6">Tip: click on a task to mark it as done</h1>
 
             <DisplayTasks 

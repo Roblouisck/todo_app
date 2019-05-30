@@ -4,7 +4,7 @@ import React from 'react';
 const InputTaskForm = ({ formValidation }) => { 
     return (                                     
       <form name="charlie" className="charlie" onSubmit={formValidation}>
-        <input name="userinput" type="text" placeholder="Enter your tasks here" size="35"/> 
+        <input name="userinput" type="text" placeholder="Enter your tasks here" size="27"/> 
         <button className="button is-info is-small" type="submit">Submit</button>
       </form>
     );

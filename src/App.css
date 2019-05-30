@@ -7,17 +7,22 @@
   cursor: pointer;
 }
 
-.grid-container {
+.overall-grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 400px 1fr 1fr;
   grid-template-rows: 1fr auto 1fr;
 }
 
 .input-tasks-grid-container {
+  grid-column-start: 3;
   margin-top: 45px;
   text-align: center;
-  display: grid;
+}
+
+.tasks-grid-container {
+  grid-row-start: 2;
   grid-column-start: 3;
+  grid-column-end: 5;
 }
 
 .tasks-title {
@@ -28,13 +33,6 @@
 .tip-text {
   position: relative;
   right: -2px;
-}
-
-.tasks-grid-container {
-  display: grid;
-  grid-row-start: 2;
-  grid-column-start: 3;
-  grid-column-end: 5;
 }
 
 .charlie {
@@ -55,6 +53,7 @@ li {
 
 ol {
   margin-left: 40px;
+  margin-top: -6px;
 }
 
 ::placeholder {

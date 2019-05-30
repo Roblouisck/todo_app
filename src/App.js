@@ -27,7 +27,7 @@ storeTask = userInput => {                                         // userInput 
       userinput: userInput,
       tasksarray: [...this.state.tasksarray, { title: userInput, crossedOut: false } ] //create a copy of tasks array then add a new object into the array filled out with user input
     });
-    document.forms["charlie"].reset();
+    document.forms["charlie"].reset();                             // reset input field after submission
 };
 
 
@@ -67,17 +67,18 @@ componentDidUpdate() {
 
     return (
       <div className="grid-container">
+        <div className="input-tasks-grid-container box">
+          <h1 className="title is-4">Submit Your Todo's</h1>
 
-        <div className="input-tasks-container box">
-          <h1 className="title is-4">Todo: </h1>
           <InputTaskForm 
             task={storeTask}
             formValidation={formValidation} />
           </div>
         
         <div className="tasks-grid-container">
-          <h1 className="Tasks-title title is-4">Tasks</h1>
+          <h1 className="tasks-title title is-4">Tasks</h1>
           <h1 className="tip-text Tasks-title subtitle is-6">Tip: click on a task to mark it as done</h1>
+
             <DisplayTasks 
               tasksArray={tasksarray} 
               removeTask={removeTask} 

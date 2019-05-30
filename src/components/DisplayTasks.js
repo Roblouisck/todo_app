@@ -3,7 +3,7 @@ import React from 'react';
 const DisplayTasks = ({ tasksArray, removeTask, crossOutTask }) => { 
   return (
     <div id="orderedList">
-      <ol id="tasks">
+      <ol>
 
         {/* Create our list items and corresponding buttons by mapping over the tasks array. The array is currently made up of objects with a title and crossedOut key. Therefore keep in mind the task prop is carrying objects, not the task title itself */}
         {tasksArray.map((task, index) => (                            

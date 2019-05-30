@@ -5,7 +5,29 @@
   -ms-user-select: none;      /* IE 10+ */
   user-select: none;          /* Likely future */    
   cursor: pointer;
-  margin-right: 400px;  
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 425px 1fr 1fr;
+  grid-template-rows: 200px 1fr;
+}
+
+.input-tasks-container {
+  margin-top: 45px;
+  text-align: center;
+  display: grid;
+  grid-column-start: 3;
+}
+
+.Tasks-title {
+  margin-top: 20px;
+}
+.tasks-grid-container {
+  display: grid;
+  grid-row-start: 2;
+  grid-column-start: 3;
+  grid-column-end: 5;
 }
 
 .removeButton {
@@ -14,13 +36,6 @@
 
 button {
   cursor: pointer;
-}
-
-.todo-container {
-  margin-left: 600px;
-  margin-top: 20px;
-  margin-right: 700px;
-  margin-bottom: 500px;
 }
 
 .charlie {
@@ -32,18 +47,5 @@ li {
 }
 
 ol {
-  margin-left: 20px;
-}
-
-.Tasks-title {
-  margin-top: 50px;
-  margin-left: 600px;
-}
-
-#inputTasksContainer {
-  text-align: center;
-}
-
-#tasks {
-  margin-left: 650px;
+  margin-left: 40px;
 }

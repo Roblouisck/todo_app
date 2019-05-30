@@ -39,6 +39,11 @@
   margin-bottom: 20px;
 }
 
+.submit-button {
+  height: 26px;
+  right: -4px;
+}
+
 .removeButton {
   margin-left: 10px
 }

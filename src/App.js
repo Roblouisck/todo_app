@@ -77,7 +77,7 @@ componentDidUpdate() {
         
         <div className="tasks-grid-container">
           <h1 className="Tasks-title title is-4">Tasks</h1>
-          <h1 className="Tasks-title subtitle is-6">Tip: click on a task to mark it as done</h1>
+          <h1 className="tip-text Tasks-title subtitle is-6">Tip: click on a task to mark it as done</h1>
             <DisplayTasks 
               tasksArray={tasksarray} 
               removeTask={removeTask} 

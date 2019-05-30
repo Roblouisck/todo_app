@@ -9,8 +9,8 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 425px 1fr 1fr;
-  grid-template-rows: 200px 1fr;
+  grid-template-columns: 1fr 1fr 400px 1fr 1fr;
+  grid-template-rows: 1fr auto 1fr;
 }
 
 .input-tasks-container {
@@ -22,7 +22,14 @@
 
 .Tasks-title {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
+
+.tip-text {
+  position: relative;
+  right: -2px;
+}
+
 .tasks-grid-container {
   display: grid;
   grid-row-start: 2;
